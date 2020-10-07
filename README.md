@@ -1,18 +1,14 @@
 # TidyverseSkeptic
-An alternate view of the Tidyverse "dialect" of the R language, and
-its promotion by RStudio.
+
+从另一种视角看 R 语言的 Tidyverse “方言”，以及 RStudio 对 Tidyverse 的推广。
 
 ## Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of Statistics at UCD)
 
-# NOTE: This Is the Short Form
+作者 Norm Matloff 为 UC Davis 计算机科学教授（曾任 UCD 统计学教授）。本中文翻译经过作者[同意](https://github.com/matloff/TidyverseSkeptic/issues/22)。文中的“我”为作者视角，但存在的任何不妥之处当然很可能是由译者引入的，还望读者不吝[赐教](https://github.com/boltomli/TidyverseSkeptic/issues/new)。
 
-To me, the main problem with the Tidyverse is teachability.  I believe
-that teaching beginners with no coding backgroun is actually **impeded**
-by the use of the Tidyverse instead of base-R.  This short form here
-consists of extraction of the teachability aspects of my
-TidyverseSkeptic essay.  The full document, addressing other issues, is
-available
-[here](https://github.com/matloff/TidyverseSkeptic/blob/master/READMEFull.md).
+# 注意：此为简版
+
+在我看来，Tidyverse 的主要问题在于其不利于教学。我相信使用 Tidyverse 而非 base-R 实际上会**阻碍**对没有编写代码背景的初学者进行教学。这个简洁的版本仅保留了 TidyverseSkeptic 文中关于教学的部分。我在完整的文档中还谈及了其它问题，详见[全文](READMEFull.md) (in English)。
 
 # Disclaimer
 
