@@ -6,11 +6,11 @@
 
 作者 Norm Matloff 为 UC Davis 计算机科学教授（曾任 UCD 统计学教授）。本中文翻译经过作者[同意](https://github.com/matloff/TidyverseSkeptic/issues/22)。文中的“我”为作者视角，但译文中存在的任何不妥之处当然很可能是由译者引入的，还望读者不吝[赐教](https://github.com/boltomli/TidyverseSkeptic/issues/new)。
 
-# 注意：此为简版
+## 注意：此为简版
 
 在我看来，Tidyverse 的主要问题在于其不利于教学。我相信使用 Tidyverse 而非 base-R 实际上会**阻碍**对没有编写代码背景的初学者进行教学。这个简洁的版本仅保留了 TidyverseSkeptic 文中关于教学的部分。我在完整的文档中还谈及了其它问题，详见[英文原文全文](READMEFull.md)。
 
-# 声明
+## 声明
 
 本文在某种程度上比较坦率，并且涉及非常流行的 Tidyverse 及 RStudio。我想本文是有礼貌的，并且应被视为具有建设性的批评。 
 
@@ -36,22 +36,13 @@
 
 * RStudio 作了可敬的工作，让更多女性及未被充分代表的少数群体能接触到 R。然而，由于被限制在复杂的 Tidyverse 系统中，这些群体将很难为 R 语言作出更多贡献，诸如编写 CRAN 包、撰写书籍等等。这些工作需要相当熟悉 base-R 的使用，即使代码本身仍然可以主要由 Tidyverse 写就。
 
-# <a name="teachable"> </a> TEACHABILITY
+## <a name="teachable"> </a> 可教学性
 
-Teaching has been a keen interest of mine since my college days.  I've
-been a teacher of stat and computers for many years, and have won
-various teaching awards.  My textbook, *Statistical Regression and
-Classification: from Linear Models to Machine Learning*, was the
-recipient of the 2017 Ziegel Award.
- 
-But it goes far beyond that; I really am intensely interested in how
-people learn, from children to middle-aged adults.  Among other things,
-I've taught English As a Second Language to immigrant adults, most of
-whom have had less than a high school education.
+从大学以来，教学一直是我兴趣所在。我成为统计和计算机老师很多年，也得过一些教学奖项。我写的课本 *Statistical Regression and Classification: from Linear Models to Machine Learning* 获得 2017 年的 Ziegel Award。
 
-In discussing teaching, I am taking the target audience here to be
-**nonprogrammers who wish to use R for data analysis**, not those who wish
-to become professional R programmers.
+远不止于此，我对人们如何学习有浓厚的兴趣，从孩童到中年。除了上述课程以外，我还教过移民成年人作为第二语言的英语，他们大多数没有完成高中教育。
+
+关于教学的讨论，我这里把对象定为 **想用 R 进行数据分析的非程序员**，而不是想成为专业 R 语言程序员的人。
 
 ### Case Study: Teaching One's First Lesson in R
 
