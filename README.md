@@ -8,7 +8,7 @@
 
 ## 注意：此为简版
 
-在我看来，Tidyverse 的主要问题在于其不利于教学。我相信使用 Tidyverse 而非 base-R 实际上会**阻碍**对没有编写代码背景的初学者进行教学。这个简洁的版本仅保留了 TidyverseSkeptic 文中关于教学的部分。我在完整的文档中还谈及了其它问题，详见[英文原文全文](READMEFull.md)。
+在我看来，Tidyverse 的主要问题在于其不利于教学。我相信使用 Tidyverse 而非 base-R 实际上会**阻碍**对没有编写代码背景的初学者进行教学。这个简洁的版本仅保留了 TidyverseSkeptic 文中关于教学的部分。我在完整的文档中还谈及了其它问题，详见[英文原文全文](https://github.com/matloff/TidyverseSkeptic/blob/master/READMEFull.md)。
 
 ## 声明
 
@@ -61,7 +61,7 @@ Tidyverse 对初学者过于复杂。这里有一些便捷的例子显示 Tidy �
 ``` r
 > library(ggplot2)
 > dn <- data.frame(Nile)
-> ggplot(dn) + geom_histogram(aes(Nile),dn)
+> ggplot(dn) + geom_histogram(aes(Nile))
 ```
 
 如此，教员有太多东西需要解释——包、数据框、**ggplot()**、**aes** 参数、`+` 的作用（在这里并不表示加法）等等——因此教员也许本不该在第一堂课就展示这种用法。
@@ -81,14 +81,14 @@ Tidyverse 对初学者过于复杂。这里有一些便捷的例子显示 Tidy �
 2019年12月，一位研究者发推特说 Peter Dalgaard 的一本讲统计学概论的书“过时了”，因为用的是 base-R 而非 Tidy。想一想如果要更新到 Tidy 会涉及什么，又会强加给学生多少复杂性。这里是书中的一个例子：
 
 ``` r
-> thue2 <- subset(thuesen,blood.glucose < 7)
+> thue2 <- subset(thuesen, blood.glucose < 7)
 ```
 
 基于 base-R 的话，这第二课可以轻松讲到，说不定第一课就可以。而 Tidy 则不然，需要更改成
 
 ``` r
 > library(dplyr)
-> thue2 <- thue2 %>% filter(blood.glucose < 7)
+> thue2 <- thuesen %>% filter(blood.glucose < 7)
 ```
 
 教员首先要讲授管道操作符 `%>%`，又一份额外的复杂性。在做这件事情的时候，教员很可能要强调管道是“从左到右”的流，然而学生会感到困惑，因为从左到右的流完成后，马上就又跟着一个从右到左的流 `<-`。（不管出于什么原因，Tidy 似乎并不使用 R 的 `->` 操作。）
