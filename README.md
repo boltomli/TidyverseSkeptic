@@ -95,44 +95,31 @@ Tidyverse 对初学者过于复杂。这里有一些便捷的例子显示 Tidy �
 
 又一次，Tidyverse 对于没有编程背景的学习 R 的人依然过于复杂，**拖慢了学习进度**。
 
-### The Tidyverse advocates' claims
+### Tidyverse 倡导者们的提法
 
-As a lifelong passionate teacher, I strongly question the claim made by
-Tidyverse advocates that it facilitates the teaching of R to
-non-programmers, as opposed to teaching them base-R.  
+怀着为教学致力终生的热情，我强烈质疑 Tidyverse 倡导者们的提法，即使用 Tidy 对非程序员进行教学，而不使用 base-R。
 
-(I regard both **dplyr** and **data.table** as advanced topics; neither
-is suitable for beginners.  On the other hand, I think teaching
-beginners **ggplot2** is fine, but point out again that it is not part
-of the Tidyverse.)
+（我认为 **dplyr** 和 **data.table** 都是高阶的课题；两者都不适合初学者。另一方面，指导初学者使用 **ggplot2** 则完全可行，当然要再次指出其并不是 Tidyverse 的一部分）
 
-There has been no study of Tidy advocates' teachability claim.
-Advocates often provide testimonials from students like 
+还没有关于倡导者们对 Tidy 可教学性的提法的研究。倡导者们通常会提供来自学生的赞誉，如
 
-* "I learned R using Tidyverse, and now am productive in R" 
+* “我用 Tidyverse 学习了 R，现在用 R 很有生产力”
 
-* "I like the English-like nature of the Tidyverse"
+* “我喜欢 Tidyverse 类似英文的自然用法”
 
-* "I can make beautiful graphics with the Tidyverse"
+* “我可以用 Tidyverse 做出漂亮的图”
 
-* "Tidyverse showed me the fluidity of data"
+* “Tidyverse 向我展现了数据的流动”
 
-Advocates who are instructors will echo those statements, and add, e.g.
+同时也是教员的倡导者们则会重复这些陈述并加以评论，诸如：
 
-* "Base-R is good for professional programmers, but the Tidyverse is the
-  best R learning tool for non-techies who just want to do data
-analysis"
+* “Base-R 适合专业程序员，但 Tidyverse 是只想进行数据分析的非技术人员学习 R 的最佳工具”
 
-* "R was created by statisticians, for statisticians.  But we are data
-  scientists, mainly interested in producing graphs and tables"
+* “R 由统计学家创造，为统计学家使用。而我们是数据科学家，主要兴趣在于制作图表”
 
-* "The Tidyverse is **modern** R, for the rest of us"
+* “Tidyverse 是 **现代的** R，供我们其他人使用”
 
-All of these statements are either misleading, irrelevant to the
-teachability issue, or downright meaningless.  They say nothing at all
-about the teachability of base-R in comparison to Tidy.  (It is ironic
-that advocates who present such statements are data scientists, who
-ought to know the need for a control group.)
+全部这些陈述要么具有误导性，要么和可教学性问题无关，或者是彻底的空话。关于 base-R 与 Tidy 间可教学性的比较，它们等于什么也没有讲。（讽刺的是，展示这些陈述的倡导者们是数据科学家，本应知道存在控制组的必要性。）
 
 ### Tidyverse makes learning harder, due to adding much complexity 
 
