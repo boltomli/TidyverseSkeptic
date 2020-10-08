@@ -1,81 +1,40 @@
 # TidyverseSkeptic
 
-从另一种视角看 R 语言的 Tidyverse “方言”，以及 RStudio 对 Tidyverse 的推广。
+从另一种视角看 R 语言的 Tidyverse “方言”，以及 RStudio 对 Tidyverse 的提倡。
 
 ## Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of Statistics at UCD)
 
-作者 Norm Matloff 为 UC Davis 计算机科学教授（曾任 UCD 统计学教授）。本中文翻译经过作者[同意](https://github.com/matloff/TidyverseSkeptic/issues/22)。文中的“我”为作者视角，但存在的任何不妥之处当然很可能是由译者引入的，还望读者不吝[赐教](https://github.com/boltomli/TidyverseSkeptic/issues/new)。
+作者 Norm Matloff 为 UC Davis 计算机科学教授（曾任 UCD 统计学教授）。本中文翻译经过作者[同意](https://github.com/matloff/TidyverseSkeptic/issues/22)。文中的“我”为作者视角，但译文中存在的任何不妥之处当然很可能是由译者引入的，还望读者不吝[赐教](https://github.com/boltomli/TidyverseSkeptic/issues/new)。
 
 # 注意：此为简版
 
-在我看来，Tidyverse 的主要问题在于其不利于教学。我相信使用 Tidyverse 而非 base-R 实际上会**阻碍**对没有编写代码背景的初学者进行教学。这个简洁的版本仅保留了 TidyverseSkeptic 文中关于教学的部分。我在完整的文档中还谈及了其它问题，详见[全文](READMEFull.md) (in English)。
+在我看来，Tidyverse 的主要问题在于其不利于教学。我相信使用 Tidyverse 而非 base-R 实际上会**阻碍**对没有编写代码背景的初学者进行教学。这个简洁的版本仅保留了 TidyverseSkeptic 文中关于教学的部分。我在完整的文档中还谈及了其它问题，详见[英文原文全文](READMEFull.md)。
 
-# Disclaimer
+# 声明
 
-This essay is somewhat frank, involving the very popular Tidyverse and
-RStudio. I hope it is polite and taken as constructive criticism.  
+本文在某种程度上比较坦率，并且涉及非常流行的 Tidyverse 及 RStudio。我想本文是有礼貌的，并且应被视为具有建设性的批评。 
 
-I like and admire the RStudio people, including the Tidyverse
-originator, Hadley Wickham, and have always supported them, both
-privately and
-[publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).
-They and I have been interacting from the beginning, when the firm
-consisted of only founder JJ Allaire and ace developer Joe Cheng.  I
-highly praise the firm to my students, and I use and recommend 
-Hadley's (non-Tidyverse) packages **ggplot2** and **stringr**, and 
-on occasion **devtools** has been an absolute lifesaver for me.
+我对 RStudio 的人们抱有喜爱和尊敬的态度，包括 Tidyverse 的提出者 Hadley Wickham。我也一直支持他们，无论私下或是[公开](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/)。从公司只有创始人 JJ Allaire 和首席开发 Joe Cheng 的时候开始，我们就一直互动。我向我的学生们高度赞扬 RStudio 公司，我使用并推荐 Hadley 的包 **ggplot2** 和 **stringr** （均不属于 Tidyverse），有时 **devtools** 确实节省了我大量时间。
 
-In other words, I don't consider RStudio to be some evil cabal.  I state
-at various places in this essay that I think their actions have been
-well-intentioned.  Nevertheless, I believe that **RStudio took a wrong
-turn when it decided to promote the Tidyverse**, which has led to a
-situation in which the unity and health of the language is at stake.
+换句话说，我并没有把 RStudio 当作什么邪恶社团。我在本文中的不少地方都表明我认为他们的行为具有良好的意图。然而，我持有如下看法：**决定推广 Tidyverse 是 RStudio 作出的错误抉择**，这使 R 语言的一致性和健康性遭到威胁。
 
-[My bio is here.](http://heather.cs.ucdavis.edu/matloff.html)
-Specifically in terms of R, I've been an R user and developer since near the 
-beginning, having used R's predecessor S before that.  I've 
-published several books that use R, and have served as the 
-Editor-in-Chief of the *R Journal*.  (Hadley is a former EiC on the
-journal.)
+[这里是我的简历。](http://heather.cs.ucdavis.edu/matloff.html) 关于 R 语言的部分，我从几乎最开始就是 R 的用户和开发者，在那之前我使用 R 的前身 S。我出版过几本使用 R 语言的书，还担任过 *R Journal* 的主编。Hadley 也曾任此期刊的主编。
 
-## TEACHABILITY OVERVIEW
+## 可教学性概览
 
-* My biggest concern is involves teaching of R.  **Tidy makes it more
-  DIFFICULT for nonprogrammer learners of R to become proficient in the
-language**.
+* 我最大的担忧来自 R 语言教学。**对于需要学习 R 语言的非程序员来说，Tidy 让精通这门语言变得更困难**。
 
-* The Tidyverse arose from the desire to have a set of functions/packages that
-   are consistent with each other, a "purist" philosophy that appeals,
-for instance, to computer scientists.  The Tidyverse also borrows from
-other "purist" computer science (CS) philosophies, notably *functional
-programming* (FP).  The latter is abstract and theoretical,
-**difficult even for CS students**, and thus it is clear 
-**Tidy is an unwise approach for
-nonprogrammer students of R.**
+* Tidyverse 来自这样一种渴求，即要有一组相互兼容、行为一致的函数或包。这种“纯正”哲学对计算机科学家有着难以抗拒的吸引力。Tidyverse 也借鉴了其它“纯正”计算机科学（CS）哲学，特别是 *函数式编程*（FP）。FP 抽象化且理论化，**即使对 CS 专业的学生来说也较困难**。因此，显然 **若学习 R 语言的人并非程序员，Tidy 是一种不甚明智的方案**。
 
-*  **Another price of purity is increased complexity and
-    abstraction**, making code more prone to error (as well as a
-sacrifice in performance).  
+* **纯正带来的其它代价包括更复杂和更抽象**，代码更容易出错（同时还牺牲了性能）。
 
-*  In fact, the **Tidyverse is general is far too complex for learners
-    without prior coding background**, causing what psychologists call
-<i>cognitive overload</i>.
+* 实际上，**如果学习者之前没有编写代码的背景，Tidyverse 总体来说过于复杂**，这会引发心理学家所称的 <i>认知过载</i> 现象。
 
-*  Indeed, even many Tidy advocates concede that it is in various
-    senses often more difficult to write Tidy code than base-R.  
-Hadley says, for instance, "it may take a while to wrap your head around [FP]."
+* 确实，很多 Tidy 的倡导者也承认在各种意义下 Tidy 代码比 base-R 更难编写。比如，Hadley 说“可能需要一些时间让你的头脑适应 [FP].”
 
-* Thus, contrary to the claim made by RStudio for promoting the Tidyverse is
-    that it makes R easier to teach to non-programmers, 
-**I would argue that, on the contrary, the Tidyverse makes R
-*harder* to learn for this group.**
+* RStudio 提倡 Tidyverse 的时候声称它能够使非程序员更容易学习 R。出于上述原因，与之正相反，**我要提出异议：Tidyverse 让这个群体的人们学 R 变得 *更难***。
 
-* RStudio has done an admirable job in bringing more women and
-  underrepresented minorities into R.  Yet by saddling them with the
-complicated Tidyverse system, RStudio has made it more difficult for
-these groups to make contributions to the language, in the form of
-writing CRAN packages, authoring books and so on, which require good
-facility with base-R even if the code is largely Tidyverse.
+* RStudio 作了可敬的工作，让更多女性及未被充分代表的少数群体能接触到 R。然而，由于被限制在复杂的 Tidyverse 系统中，这些群体将很难为 R 语言作出更多贡献，诸如编写 CRAN 包、撰写书籍等等。这些工作需要相当熟悉 base-R 的使用，即使代码本身仍然可以主要由 Tidyverse 写就。
 
 # <a name="teachable"> </a> TEACHABILITY
 
