@@ -12,7 +12,7 @@
 
 ## 声明
 
-本文在某种程度上比较坦率，并且涉及非常流行的 Tidyverse 及 RStudio。我想本文是有礼貌的，并且应被视为具有建设性的批评。 
+本文在某种程度上比较坦率，并且涉及非常流行的 Tidyverse 及 RStudio。我想本文是有礼貌的，并且应被视为具有建设性的批评。
 
 我对 RStudio 的人们抱有喜爱和尊敬的态度，包括 Tidyverse 的提出者 Hadley Wickham。我也一直支持他们，无论私下或是[公开](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/)。从公司只有创始人 JJ Allaire 和首席开发 Joe Cheng 的时候开始，我们就一直互动。我向我的学生们高度赞扬 RStudio 公司，我使用并推荐 Hadley 的包 **ggplot2** 和 **stringr** （均不属于 Tidyverse），有时 **devtools** 确实节省了我大量时间。
 
@@ -44,27 +44,19 @@
 
 关于教学的讨论，我这里把对象定为 **想用 R 进行数据分析的非程序员**，而不是想成为专业 R 语言程序员的人。
 
-### Case Study: Teaching One's First Lesson in R
+### 案例分析：R 语言第一课
 
-The Tidyverse is just too complex for beginners.  Here some quick
-examples of the complexity of Tidy, and its consequent unsuitability for
-use in teaching nonprogrammer learners of R.
+Tidyverse 对初学者过于复杂。这里有一些便捷的例子显示 Tidy 的复杂性及其后果，非程序员学生学习 R 的时候难以适应。
 
-Let's look at  my online R tutorial,
-[**fasteR**](http://github.com/matloff/fasteR)).  Consider, for
-instance, an innocuous line like 
+来看一下我的在线 R 教程 [**fasteR**](http://github.com/matloff/fasteR)。比如，考虑下面这样无害的一行
 
 ``` r
 > hist(Nile)
 ```
 
-i.e. drawing a simple histogram of R's built-in Nile River dataset.  
+即用 R 内置的尼罗河数据集绘制一副简单的直方图。
 
-This is in the very first lesson in my tutorial.  Easy!  By contrast,
-the Tidy crowd forbids use of base-R plots, insisting on using
-**ggplot2** (which again is not Tidy, but is considered as such by the
-Tidy advocates).  To be Tidy the instructor would have to do something
-like
+这就是我教程的第一课。简单！作为对比，用 Tidy 的群体不许使用 base-R 绘图，而是坚持使用 **ggplot2**（再说一次，其实这并不属于 Tidy，只不过有 Tidy 的倡导者常如此描述）。要想用 Tidy，教员需要如下操作
 
 ``` r
 > library(ggplot2)
@@ -72,28 +64,17 @@ like
 > ggplot(dn) + geom_histogram(aes(Nile),dn)
 ```
 
-Here the instructor would have a ton of things to explain -- packages,
-data frames, **ggplot()**, the **aes** argument, the role of the '+'
-(it's not addition here) and so on -- and thus she could definitely NOT
-present it in the first lesson.
+如此，教员有太多东西需要解释——包、数据框、**ggplot()**、**aes** 参数、`+` 的作用（在这里并不表示加法）等等——因此教员也许本不该在第一堂课就展示这种用法。
 
-Also in my very first lesson, I do
+同样出自我的第一课，还有
 
 ``` r
 > mean(Nile[80:100])
 ```
 
-printing the mean Nile River flow during a certain range of years.
-Incredibly, not only would this NOT be in a first lesson with Tidy, the
-students in a Tidy course may actually *never* learn how to do this.
-Typical Tidiers don't consider vectors very important for learners, let
-alone vector subscipts. 
+打印给定年份区间内尼罗河流量的平均数。令人惊奇的是，这不仅不会出现在 Tidy 第一课，使用 Tidy 教程的学生甚至有可能 *永远不会* 学到如何做这件事。典型的 Tidy 教员并不认为向量对学习者有多么重要，更不要说向量下标了。
 
-As a concrete example of this Tidy point of view, consider the book
-*Getting Started with R*, by Beckerman *et al*, Oxford University Press,
-second edition, 2017.  The book makes a point of being 
-["Tidyverse compliant"](https://twitter.com/GSwithR/status/996830294367002625).
-In 231 pages, vectors are mentioned just briefly, with no coverage of subscipts.
+作为这个 Tidy 观点的实例，请见 *Getting Started with R*，作者 Beckerman *et al*，Oxford University Press，second edition，2017。这本书特别强调 [“遵循 Tidyverse”](https://twitter.com/GSwithR/status/996830294367002625)。书共231页，仅简略地提到向量，并且完全没有提及下标。
 
 ### Case Study: Dalgaard book
 
