@@ -76,35 +76,24 @@ Tidyverse 对初学者过于复杂。这里有一些便捷的例子显示 Tidy �
 
 作为这个 Tidy 观点的实例，请见 *Getting Started with R*，作者 Beckerman *et al*，Oxford University Press，second edition，2017。这本书特别强调 [“遵循 Tidyverse”](https://twitter.com/GSwithR/status/996830294367002625)。书共231页，仅简略地提到向量，并且完全没有提及下标。
 
-### Case Study: Dalgaard book
+### 案例分析：Dalgaard 的书
 
-A researcher tweeted in December 2019 that an introductory statistics
-book by Peter Dalgaard is "now obsolete," because it uses base-R rather
-than Tidy.  Think of what an update to Tidy would involve, how much extra
-complexity it would impose on the students.  Here is an example from the
-book:
+2019年12月，一位研究者发推特说 Peter Dalgaard 的一本讲统计学概论的书“过时了”，因为用的是 base-R 而非 Tidy。想一想如果要更新到 Tidy 会涉及什么，又会强加给学生多少复杂性。这里是书中的一个例子：
 
 ``` r
 > thue2 <- subset(thuesen,blood.glucose < 7)
 ```
 
-This could easily be in the base-R instructor's second lesson, if not
-the first.  For Tidy, though, this would have to be changed to
+基于 base-R 的话，这第二课可以轻松讲到，说不定第一课就可以。而 Tidy 则不然，需要更改成
 
 ``` r
 > library(dplyr)
 > thue2 <- thue2 %>% filter(blood.glucose < 7)
 ```
 
-Here the instructor would first have to teach the pipe operator '%>%',
-again extra complexity.  And in so doing, she would probably emphasize
-the "left to right" flow of pipes, but the confused students would then
-wonder why, after that left-to-right flow, there is suddenly a
-right-to-left flow, with the '<-'.  (For some reason, the Tidy people
-don't seem to use R's '->' op.)
+教员首先要讲授管道操作符 `%>%`，又一份额外的复杂性。在做这件事情的时候，教员很可能要强调管道是“从左到右”的流，然而学生会感到困惑，因为从左到右的流完成后，马上就又跟着一个从右到左的流 `<-`。（不管出于什么原因，Tidy 似乎并不使用 R 的 `->` 操作。）
 
-Again, the Tidyverse is simply too complex for R learners without coding
-background.  **It slows down their learning process.**
+又一次，Tidyverse 对于没有编程背景的学习 R 的人依然过于复杂，**拖慢了学习进度**。
 
 ### The Tidyverse advocates' claims
 
