@@ -121,50 +121,27 @@ Tidyverse 对初学者过于复杂。这里有一些便捷的例子显示 Tidy �
 
 全部这些陈述要么具有误导性，要么和可教学性问题无关，或者是彻底的空话。关于 base-R 与 Tidy 间可教学性的比较，它们等于什么也没有讲。（讽刺的是，展示这些陈述的倡导者们是数据科学家，本应知道存在控制组的必要性。）
 
-### Tidyverse makes learning harder, due to adding much complexity 
+### Tidyverse 带来过多复杂性，让学习变得更难
 
-Contrary to the Tidy advocates' claim, I believe using the Tidyverse
-makes things more *difficult* for learners without prior programming
-background.  
+与 Tidy 倡导者的提法正相反，我相信 Tidyverse 让之前没有编程背景的人更 *难* 学习。
 
-**There is a serious problem of cognitive overload.** Tidyverse students
-are being asked to learn a much larger volume of material, which is
-clearly bad pedagogy.  See ["The Tidyverse
-Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
-author says *inter alia* that he uses "only" 60 Tidyverse functions --
-60!  The "star" of the Tidyverse, **dplyr**, consists of 263 functions. 
+**认知过载是很严重的问题**。Tidyverse 的学生要学习的材料相对多得多，这显然不是好的教育方法。在 [“Tidyverse 诅咒”](https://www.r-bloggers.com/the-tidyverse-curse)一文中，作者提到 *此外* 他还“仅仅”用到了 60 个Tidyverse 函数——60！Tidyverse 的“明星” **dplyr** 包含了 263 个函数。 
 
-While a user initially need not use more than a small fraction of those
-functions, the high complexity is clear.  Every time a user needs some
-variant of an operation, she must sift through those hundreds of
-functions for one suited to her current need.  
+尽管用户最开始只需要用到这些函数的一小部分，高度的复杂性依然明显存在。每当用户要使用一个操作的某种变体，都必须从几百个函数中筛选出正好是需要的那一个。 
 
-Tidy advocates say the uniformity of interface in all those functions
-makes learning them easier.  Uniform *syntax* is nice, yes, but the fact
-remains that users must learn the *semantics* of the functions, i.e.
-what operations they perform.  What, for example, is the difference
-between **summarize()**, **summarize_each()**, **summarize_at()** and
-**summarize_if()**?  Under which circumstances should each be used?  The
-user must sift through this.
+Tidy 倡导者说全部函数界面的统一性使学习变得更容易。统一的 *语法* 确实很好，但是实际情况是用户真正需要学习的是函数的 *语义*，即每个函数将进行何种操作。举例来说，**summarize()**、**summarize_each()**、**summarize_at()** 及 **summarize_if()** 区别何在？在何种情况下应该使用哪个函数？用户必须加以筛选。
 
-As Matt Dowle, creator of **data.table**, [pointed
-out](https://twitter.com/MattDowle/status/1142001162230489088) about
-**dplyr**,
+关于 **dplyr**，**data.table** 的创造者 Matt Dowle [指出](https://twitter.com/MattDowle/status/1142001162230489088)
 
-> It isn't one function **mutate** that you combine in a pipe.  It's
-> **mutate**, **mutate_**, **mutate_all**, **mutate_at**, **mutate_each**,
-> **mutate_each_**, **mutate_if**, **transmute**, **transmute_**,
-> **transmute_all**, **transmute_at** and **transmute_if**.  And you're
-> telling me [because of consistency of the user
-> interfaces] you don't need a manual to learn all those?
+> 你要整合进管道的并不是一个函数 **mutate**。这一个函数可以是
+> **mutate**、**mutate_**、**mutate_all**、**mutate_at**、**mutate_each**、
+> **mutate_each_**、**mutate_if**、**transmute**、**transmute_**、
+> **transmute_all**、**transmute_at** 和 **transmute_if**。
+> 而你却告诉我 [因为用户界面都是一致的] 不需要参考手册就能学会这全部？
 
-Having a common syntax thus does not compensate for this dizzying
-complexity. 
+只是共用一套语法，并不能减轻让人昏头的复杂程度。
  
-By contrast, if the user knows base-R (not difficult), she can handle
-any situation with just a few simple operations.  The old adage applies:
-"Give a man a fish, and he can eat for a day. Teach him how to fish, and
-he can eat for a lifetime."  
+作为对比，只要用户学会了 base-R （不难），就可以用少数几个简单的操作处理各种情况。古话说得好：“授人以鱼，不如授之以渔。” 
 
 ### What Tidy promoters want R beginners NOT to learn
 
