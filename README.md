@@ -143,21 +143,19 @@ Tidy 倡导者说全部函数界面的统一性使学习变得更容易。统一
  
 作为对比，只要用户学会了 base-R （不难），就可以用少数几个简单的操作处理各种情况。古话说得好：“授人以鱼，不如授之以渔。” 
 
-### What Tidy promoters want R beginners NOT to learn
+### Tidy 推广者不希望 R 初学者学习什么
 
-The Tidyers make a point of avoiding the most basic parts of base-R:
+Tidy 推广者提出避免使用 base-R 最基础的部分：
 
-* the '$' operator
+* `$` 操作符
 
-* '[[ ]]'
+* `[[ ]]`
 
-* loops
+* 循环
 
-* **plot()** and the associated basic graphics functions
+* **plot()** 以及相关的基础图形函数等
 
-They would argue that this "simplifies" the learning process, but
-actually it forces beginners to come up with more complex, less
-intuitive and harder-to-read solutions.
+他们声称这能“简化”学习的过程，然而实际上却会迫使初学者采用一套更复杂、不直观且难以阅读的方案。
 
 ### Case Study: the tapply() Function
 
