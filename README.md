@@ -238,52 +238,29 @@ tapply(mtcars$mpg, mtcars$cyl, mean)
 
 因此，说到晓畅程度和可学习性，在这个特定的例子里 Tidy 和 base-R 都不错，Tidy 也并没有更容易学习。至于可用性，我判 base-R 获胜。
 
-### Use of functional programming
+### 对函数式编程的使用
 
-Another featured Tidyverse package, the *functional programming*
-(FP)-oriented library **purrr**, has 177 functions.  Again the point
-about complexity applies;  we again have the "too many functions to
-learn" problem as we saw with **dplyr** above.  
+Tidyverse 包中另一个特殊的库，面向 *函数式编程*（FP）的 **purrr**，有 177 个函数。关于复杂性的论点依然适用；我们再次遇到和上述 **dplyr** 同样的问题，“有太多函数要学”。
 
-At the basic level, FP is merely replacing loops by calls to FP
-functions.  R's **apply** family, plus **Reduce()**, **Map()** and
-**Filter()** should be considered FP.  In many cases, using such
-functions is the right solution.  But the indiscriminate use of FP,
-advocated by many Tidyers, to replace *all* loops is clearly overdoing
-it, and makes things especially difficult for beginners.
+从入门的层次看，FP 就是调用 FP 函数以取代循环。R 的 **apply** 家族，再加上 **Reduce()**、**Map()** 和
+**Filter()**，就属于 FP。在很多情况下，使用这些函数是正确的方案。但是按很多 Tidy 推广者提倡的，不加区分地使用 FP 替代 *所有* 循环，明显是过分了，还特别给初学者带来很多困难。
 
-This is clear *a priori* -- **FP involves writing functions, a skill that
-most beginners take a long time to develop well.**
+这个推断是 *先验* 的——**FP 涉及函数的编写，而多数初学者需要很长时间去掌握这项技能**。
 
-It is worth noting that top university Computer Science Departments have
-shifted away from teaching their introductory programming courses using
-the FP paradigm, in favor of the more traditional Python, as they deem
-FP to be more abstract and challenging.  
+值得注意的是，顶尖大学的计算机系在逐渐调整编程绪论课程，不再使用 FP 范式，而是采用更传统的 Python。他们认为 FP 更加抽象，更有挑战性。
 
-An interesting discussion of the topic is in [Charavarty and
-Keller](https://www-ps.informatik.uni-kiel.de/~mh/reports/fdpe02/papers/paper15.ps.gz).
-Though they support using FP in introductory programming classes for CS
-majors,  the authors' goals are antithetical to those of R learners.
-The authors list three goals, one of which is to teach theoretical
-computer science, certainly not desirable for teaching R in general, let
-alone for teaching R to those with no coding experience.  They also
-concede that a key concept in FP, *recursion*, is a "signficant
-obstacle" even for CS students.  
+关于这个话题，一个有趣的讨论见 [Charavarty 和 Keller](https://www-ps.informatik.uni-kiel.de/~mh/reports/fdpe02/papers/paper15.ps.gz)。其实他们支持在 CS 专业的编程绪论课堂中使用 FP，但两位作者的目标和学习 R 的人正好是对立的。作者们列出了三个目标，其中一个是讲授计算机科学理论，一般性的讲授 R 语言对此当然没有什么兴趣，更不要说教没有编写代码经验的人学习 R 语言。他们承认 FP 的一个关键概念 *递归* 是“显著的障碍”，即使是对 CS 学生来说。
 
-If FP is tough for CS students, it makes no sense to have nonprogrammer
-learners of R use it.
+如果说 FP 对 CS 学生就很难，那么就没有道理让学习 R 的非程序员学生去使用 FP。
 
-Even Hadley, in *R for Data Science*, says:
+甚至 Hadley 也在 *R for Data Science* 中说道：
 
-> The idea of passing a function to another function is extremely powerful
-> idea, and it’s one of the behaviours that makes R a functional
-> programming language. It might take you a while to wrap your head around
-> the idea, but it’s worth the investment. 
+> 把一个函数传递给另一个函数，这个想法十分强大，
+> 也是使 R 可以成为函数式编程语言的行为之一。
+> 你可能需要一些时间让你的头脑适应这个想法，
+> 然而这种投入是值得的。
 
-Actually, most non-FP languages allow passing one function to another,
-but yes it is a powerful tool, worth the investment of time -- *for the
-experienced R programmer*.  But again, it's wrong to foce nonprogrammer
-learners of R to "wrap their heads around" **purrr**.
+实际上，大多数非 FP 的语言也允许将一个函数传递给另一个，而且这也确实是个强大的工具，值得投入时间学习——*对于有经验的 R 程序员来说*。然而，不应当强迫学习 R 的非程序员“让他们的头脑适应” **purrr**。
 
 ### purrr vs. base-R example 
 
