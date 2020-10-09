@@ -125,9 +125,9 @@ Tidyverse 对初学者过于复杂。这里有一些便捷的例子显示 Tidy �
 
 与 Tidy 倡导者的提法正相反，我相信 Tidyverse 让之前没有编程背景的人更 *难* 学习。
 
-**认知过载是很严重的问题**。Tidyverse 的学生要学习的材料相对多得多，这显然不是好的教育方法。在 [“Tidyverse 诅咒”](https://www.r-bloggers.com/the-tidyverse-curse)一文中，作者提到 *此外* 他还“仅仅”用到了 60 个Tidyverse 函数——60！Tidyverse 的“明星” **dplyr** 包含了 263 个函数。 
+**认知过载是很严重的问题**。Tidyverse 的学生要学习的材料相对多得多，这显然不是好的教育方法。在 [“Tidyverse 诅咒”](https://www.r-bloggers.com/the-tidyverse-curse)一文中，作者提到 *此外* 他还“仅仅”用到了 60 个Tidyverse 函数——60！Tidyverse 的“明星” **dplyr** 包含了 263 个函数。
 
-尽管用户最开始只需要用到这些函数的一小部分，高度的复杂性依然明显存在。每当用户要使用一个操作的某种变体，都必须从几百个函数中筛选出正好是需要的那一个。 
+尽管用户最开始只需要用到这些函数的一小部分，高度的复杂性依然明显存在。每当用户要使用一个操作的某种变体，都必须从几百个函数中筛选出正好是需要的那一个。
 
 Tidy 倡导者说全部函数界面的统一性使学习变得更容易。统一的 *语法* 确实很好，但是实际情况是用户真正需要学习的是函数的 *语义*，即每个函数将进行何种操作。举例来说，**summarize()**、**summarize_each()**、**summarize_at()** 及 **summarize_if()** 区别何在？在何种情况下应该使用哪个函数？用户必须加以筛选。
 
@@ -140,8 +140,8 @@ Tidy 倡导者说全部函数界面的统一性使学习变得更容易。统一
 > 而你却告诉我 [因为用户界面都是一致的] 不需要参考手册就能学会这全部？
 
 只是共用一套语法，并不能减轻让人昏头的复杂程度。
- 
-作为对比，只要用户学会了 base-R （不难），就可以用少数几个简单的操作处理各种情况。古话说得好：“授人以鱼，不如授之以渔。” 
+
+作为对比，只要用户学会了 base-R （不难），就可以用少数几个简单的操作处理各种情况。古话说得好：“授人以鱼，不如授之以渔。”
 
 ### Tidy 推广者不希望 R 初学者学习什么
 
@@ -157,40 +157,32 @@ Tidy 推广者提出避免使用 base-R 最基础的部分：
 
 他们声称这能“简化”学习的过程，然而实际上却会迫使初学者采用一套更复杂、不直观且难以阅读的方案。
 
-### Case Study: the tapply() Function
+### 案例分析：tapply() 函数
 
-One of the most commonly-used functions in R is **tapply()**.  As
-noted below, for some reason Tidy advocates hate this function, but
-arguably it is perfect for R beginners.
+**tapply()** 是在 R 语言里最常使用的函数之一。如下所示，不知出于什么原因，Tidy 倡导者不喜欢这个函数，然而这简直是 R 初学者 最好用的函数。
 
-Consider a common example in tutorials on the Tidyverse, involving R's
-**mtcars** dataset.  The goal is to find mean miles per gallon, grouped
-by number of cylinders.  The Tidy code offered is
+考虑 Tidyverse 教程里一个常见的例子，用到 R 的 **mtcars** 数据集。目标是找出一部车消耗每加仑燃料平均能行驶多少英里（miles per gallon, mpg），按汽缸个数进行分组。Tidy 给出的代码为
 
 ``` r
+library(dplyr)
 mtcars %>%
-   group_by(cyl) %>% 
+   group_by(cyl) %>%
    summarize(mean(mpg))
 ```
 
-Here is the base-R version:
+这是 base-R 版本：
 
 ``` r
-tapply(mtcars$mpg,mtcars$cyl,mean)
+tapply(mtcars$mpg, mtcars$cyl, mean)
 ```
 
-Both are simple.  Both are easily grasped by beginners. After being
-presented with some examples, beginners have no trouble using them in a
-new setting of similar type.  The Tidy version requires two function
-calls rather than one for base-R.  But again, both versions are simple,
-so let's call it a tie.  But is it certainly not the case that the Tidy
-version is *easier* to learn.
+两者都很简单。都不难为初学者所掌握。初学者看过几个例子后，把它们应用在同类别的新问题也不会有什么困难。Tidy 版本调用了两个函数，base-R 则是一个。无论如何，两个版本都不复杂，难分伯仲。但是这当然不能算作 Tidy 版本比较 *容易* 学习的例子。
 
-It's instructive to look at what happens when one groups by two aspects:
+如何从两个方面进行分组比较有指导意义：
 
 ``` r
 > mtcars %>%
-+ group_by(cyl,gear) %>%
++ group_by(cyl, gear) %>%
 + summarize(mean(mpg))
 # A tibble: 8 x 3
 # Groups:   cyl [3]
@@ -204,41 +196,28 @@ It's instructive to look at what happens when one groups by two aspects:
 6     6     5        19.7
 7     8     3        15.0
 8     8     5        15.4
-> tapply(mtcars$mpg,list(mtcars$cyl,mtcars$gear),mean)
+> tapply(mtcars$mpg, list(mtcars$cyl, mtcars$gear), mean)
       3      4    5
 4 21.50 26.925 28.2
 6 19.75 19.750 19.7
 8 15.05     NA 15.4
 ```
 
-With **tapply()**, students do have to be told that in the case of more
-than one grouping variable, they need to surround the variables with
-'list'.  Again, once they are given examples, students have no trouble
-with this.
+必须告诉学生，**tapply()** 用于分组的变量数多于一个时，要把变量用 `list` 括起来。和前面一样，只要有一些例子，学生们这样用没有什么困难。
 
-But look at the form of the output:  The Tidy version outputs a tibble,
-rather hard to read, while **tapply()** outputs an R matrix, printed out
-as a two-way table.  The latter form is exactly what many students need
-in their applications, e.g.  social science research.  
+不过要看看输出形式：Tidy 版本输出一个 tibble，不易阅读，而 **tapply()** 输出一个 R 矩阵，以双向表的形式打印出来。后者的形式恰好是很多学生所需要的，比如应用到社会科学研究等。
 
-In searching through the hundreds of functions in **dplyr**, it is not
-clear to me which one, if any, can convert that Tidy output to the very
-informative tabular view that **tapply()** provides.  If there is one,
-the fact that one is not easily identifiable illustrates my point above
-that Tidy is actually very bloated, not suitable for beginners.
+检索过 **dplyr** 的几百个函数后，我没有找到如何把 Tidy 的输出转换为 **tapply()** 提供的更有信息量的表格样式。假使可以做到，既然没法轻易识别出这样的函数，也正好能体现我上述观点，Tidy 过于臃肿，不适合初学者。
 
-Moreover, the **tapply()** output is more informative in a second sense,
-letting the user know that there were no 8-cyliner, 4-speed cars, again
-the kind of thing that is quite meaningful in many applications.  
+此外，**tapply()** 的输出还有另一重含义，用户能够察觉没有8-汽缸、4-挡位的汽车，这又是在很多应用中非常有意义的一类信息。
 
-Actually, the Tidy version can be modified in order to notice that empty
-group:
+实际上，可以对 Tidy 版本加以修改以显示空白组：
 
 ``` r
 > mtcars$cyl <- as.factor(mtcars$cyl)
 > mtcars$gear <- as.factor(mtcars$gear)
-> mtcars %>% 
-+    group_by(cyl,gear,.drop=FALSE) %>% 
+> mtcars %>%
++    group_by(cyl, gear, .drop=FALSE) %>%
 +    summarize(mean(mpg))
 # A tibble: 9 x 3
 # Groups:   cyl [3]
@@ -251,18 +230,13 @@ group:
 5 6     4            19.8
 6 6     5            19.7
 7 8     3            15.0
-8 8     4           NaN  
+8 8     4           NaN
 9 8     5            15.4
 ```
 
-Note the need to convert to factors, something not mentioned in the
-Tidy documentation, and which would further complicate things for R
-beginners even if it were documented.
+注意需要格式转换，Tidy 文档没有提到。即使有文档，这对 R 初学者来说也是更加复杂了。
 
-So, in terms of clarity and learnability, the Tidy and base-R versions
-in this paricular example are both good, again showing that Tidy is not
-easier to learn.  And In terms of usability, I'd give base-R the win
-here. 
+因此，说到晓畅程度和可学习性，在这个特定的例子里 Tidy 和 base-R 都不错，Tidy 也并没有更容易学习。至于可用性，我判 base-R 获胜。
 
 ### Use of functional programming
 
