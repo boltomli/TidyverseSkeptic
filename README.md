@@ -262,13 +262,12 @@ Tidyverse 包中另一个特殊的库，面向 *函数式编程*（FP）的 **pu
 
 实际上，大多数非 FP 的语言也允许将一个函数传递给另一个，而且这也确实是个强大的工具，值得投入时间学习——*对于有经验的 R 程序员来说*。然而，不应当强迫学习 R 的非程序员“让他们的头脑适应” **purrr**。
 
-### purrr vs. base-R example 
+### purrr 与 base-R 的对比
 
-Again, let's use an **mtcars** example taken from
-[an online tutorial](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229).  Here the goal is to regress miles per gallon against weight, calculating R<sup>2</sup> for each cylinder group.  Here's the Tidy
-solution, from the online help page for **map()**:
+我们再次使用 **mtcars** 做例子，来自[在线教程](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229)。这里的目标是用车重去回归英里每加仑，计算每个汽缸组别的 R<sup>2</sup>。这是 Tidy 方案，来自 **map()** 的在线帮助页面：
 
 ``` r
+library(purrr)
 mtcars %>%
   split(.$cyl) %>%
   map(~ lm(mpg ~ wt, data = .)) %>%
@@ -280,69 +279,42 @@ mtcars %>%
 0.5086326 0.4645102 0.4229655
 ```
 
-There are several major points to note here:
+这里有几个主要的点需要注意：
 
-* The R learner here must learn two different map functions for this
-  particular example, and a dozen others for even basic use. This is an
-excellent example of Tidy's cognitive overload problem.  Actually,
-**purrr** has 52 different map functions!  (See below.)
+* 针对这个特定的例子，学习 R 的人必须要学习两个不同的 map 函数，以及大量其它函数，只为了一个基础用法。这个例子很好地说明了 Tidy 认知过载的问题。实际上，**purrr** 有 52 个不同的 map 函数！（见下）
 
-* The first '~' in that first map call is highly nonintuitive.  Even
-  experienced programmers would not be able to guess what it does. This
-is starkly counter to the Tidyers' claim that Tidy is more intuitive and
-English-like.
+* 第一个 map 调用中的第一个 `~` 十分不直观，即使有经验的程序员也没法猜出其作用。这能有力反驳 Tidy 倡导者所声称 Tidy 更符合直觉、就像英语。
 
-* Tidy, in its obsession to avoid R's standard '$' symbol, is causing
-  all kinds of chaos and confusion here.
+* Tidy 执着于避开使用 R 语言标准的 `$` 符号，导致了各种混乱与困惑。
 
-    The hapless student would naturally ask, "Where does that expression
-'summary' come from?"  It would appear that **map()** is being called on
-a nonexistent variable, **summary**.  In actuality, base-R's
-**summary()** function is being called on the previous computation
-behind the scenes.  Again, highly nonintuitive, and NOT stated in the
-online help page.
+* 不幸的学生自然要问：“表达式里的 ‘summary’ 是哪里来的？”看起来像是在调用 **map()** 的时候用了不存在的变量 **summary**。而在幕布背后，实际上是 base-R 的 **summary()** 函数被调用于前面的计算。这又是相当不直观的，在线帮助页面中也 **没有** 提到。
 
-    The poor student is further baffled by the call to **map_dbl()**.
-Where did that 'r.squared' come from?  Again, Tidy is hiding the
-fact that **summary()** yields an S3 object with component
-**r.squared**.  Yes, sometimes it is helpful to hide the details, but
-not if it confuses beginners.
+* 这个可怜的学生会对调用 **map_dbl()** 感到进一步困扰。那个 `r.squared` 从哪里来？再一次，Tidy 把事实隐藏了，**summary()** 会产生一个含有 **r.squared** 组件的 S3 对象。是的，有时候隐藏细节是有帮助的，但只是在不会让初学者感到困惑的时候。
 
-The fact is, **R beginners would be much better off writing a loop here,
-avoiding the conceptually more challenging FP.** But even if the
-instructor believes the beginner *must* learn FP, the base-R version is
-far easier:
+实际上，**R 初学者最好还是从写一个循环开始，避开具有挑战性的 FP 概念**。即使教员认为初学者 *必须* 学习 FP，base-R 版本也要简单很多：
 
 ``` r
 lmr2 <- function(mtcSubset) {
-   lmout <- lm(mpg ~ wt,data=mtcSubset)
-   summary(lmout)$r.squared
+  lmout <- lm(mpg ~ wt, data=mtcSubset)
+  summary(lmout)$r.squared
 }
-u <- split(mtcars,mtcars$cyl)
-sapply(u,lmr2)
+u <- split(mtcars, mtcars$cyl)
+sapply(u, lmr2)
 ```
 
-Here **lmr2()** is defined explicitly, as opposed to the Tidy version, with
-its inscrutable '~' within the **map()** call.
+这里 **lmr2()** 有明确的定义，而不是 Tidy 版本里难以看透的 **map()** 调用和其中的 `~`。
 
-In a [Twitter discussion](https://twitter.com/dgkeyes/status/1200532987000971264)
-of the above example, a Tidy advocate protested that the above **purrr** code was not 
-appropriate for learners:
+在关于这个例子的[推特讨论](https://twitter.com/dgkeyes/status/1200532987000971264)中，一个 Tidy 倡导者提出异议说上面的 **purrr** 代码不适合学生用：
 
-> Sure, but my original tweet was about teaching newbies. Your example is
-> not really relevant to that because it's about a VERY complex concept.
+> 当然，不过我原本的推特是讲如何教导新人的。
+> 你的例子其实是无关的，因为这是非常复杂的概念。
 
-Exactly my point!  **Newbies should write this as a loop, NOT using
-purrr**.  But the Tidy promoters don't want learners to use loops.
-So the instructor using Tidy simply would avoid giving students such an
-example, whereas it would be easy for the base-R instructor to do so.
+这就是我的观点！**新人应该用循环，而不是purrr**。然而 Tidy 推广者不愿让学生用循环。所以用 Tidy 的教员就得避免给学生用这样的例子，同样的例子用 base-R 的教员就很容易处理。
 
-As noted, the Tidy version shown earlier  is an illustration of the "too
-many functions to learn," cognitive overload, problem we saw earlier
-with **dplyr**.  Behold:
+如上所述，Tidy 版本是对“有太多函数要学”这种认知过载的写照，我们更早在 **dplyr** 中也见到了这个问题。请看：
 
 ``` r
-> ls(package:purrr,pattern='map*')
+> ls('package:purrr', pattern='map*')
  [1] "as_mapper"      "imap"           "imap_chr"       "imap_dbl"      
  [5] "imap_dfc"       "imap_dfr"       "imap_int"       "imap_lgl"      
  [9] "imap_raw"       "invoke_map"     "invoke_map_chr" "invoke_map_dbl"
@@ -358,9 +330,7 @@ with **dplyr**.  Behold:
 [49] "pmap_dfr"       "pmap_int"       "pmap_lgl"       "pmap_raw"      
 ```
 
-By contrast, in the base-R version, we indeed stuck to base-R!  There
-are only four main functions to learn in the 'apply' family:  **apply()**,
-**lapply()**, **sapply()** and **tapply()**.
+作为对比，base-R 版本中我们就只用到了 base-R！在 `apply` 家族中只有四个函数要学：**apply()**、**lapply()**、**sapply()** 和 **tapply()**。
 
 ### Tibbles
 
