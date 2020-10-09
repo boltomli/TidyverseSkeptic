@@ -334,16 +334,9 @@ sapply(u, lmr2)
 
 ### Tibbles
 
-Similarly, it is bad pedagogy to force students to learn tibbles, a
-more complex technology, instead of data frames, a simpler one.  The
-types of situations that tibbles are meant to address should be an
-advanced topic, not for beginners with no coding background.
+同样，迫使学生学习 tibbles 是糟糕的教学方法。这是更复杂的技术，还是数据框更简明。需要 tibbles 解决的情况应属于进阶课题，并不适宜没有编码背景的初学者。
 
-Those advanced situations involve data frames in which row/column
-elements are not *atomic* objects, i.e.\ not simple numbers, character
-strings or logical values.  **This is a "straw man" set up by the Tidy
-advocates'**; R beginners are very unlikely to encounter data frames of
-this type.
+这些高级的情况下，数据框里列或行的元素不是 *原子* 对象，即并非简单的数字、字符串或者逻辑值。**这是 Tidy 倡导者树立的“稻草人”**；R 初学者不大可能遇到这种类型的数据框。
 
 ### The English issue
 
