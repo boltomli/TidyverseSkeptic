@@ -275,7 +275,7 @@ mtcars %>%
   map_dbl("r.squared")
 
 # output
-4         6         8 
+4         6         8
 0.5086326 0.4645102 0.4229655
 ```
 
@@ -338,29 +338,22 @@ sapply(u, lmr2)
 
 这些高级的情况下，数据框里列或行的元素不是 *原子* 对象，即并非简单的数字、字符串或者逻辑值。**这是 Tidy 倡导者树立的“稻草人”**；R 初学者不大可能遇到这种类型的数据框。
 
-### The English issue
+### 英语的问题
 
-Again, the point most emphasized by Tidyverse advocates is that the
-Tidyverse is more teachable because of its "English-like" syntax. 
+Tidyverse 倡导者强调最多的观点是 Tidyverse 的语法“像英语”，所以更容易教学。
 
-Below is a comparison of the "English" **dplyr** to the "non-English"
-**data.table** (adapted from
-[here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)):
-We'll again use R's built-in **mtcars** dataset.
+下面对比“英语”的 **dplyr** 和“非英语”的 **data.table**（来自[这里](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)）。我们要再次使用 R 内置的 **mtcars** 数据集。
 
-``` r 
-mtdt <- as.data.table(mtcars);  mtdt[cyl == 6]  # data.table syntax
-mttb <- as_tibble(mtcars);  filter(mttb,cyl == 6)  # dplyr syntax 
-``` 
+``` r
+library(data.table)
+mtdt <- as.data.table(mtcars);  mtdt[cyl == 6]  # data.table 语法
+library(dplyr)
+mttb <- as_tibble(mtcars);  filter(mttb, cyl == 6)  # dplyr 语法
+```
 
-Is there really any difference?  Can't beginners, even without
-programming background, quickly adapt to either one after seeing a few
-examples?  Even those who claim high teachability for **dplyr** do
-readily agree that their students could also easily pick up
-**data.table**, or for that matter my preference for beginners, base-R,
-given some examples.
+真有什么区别吗？初学者即使没有编程背景，看过一些例子后，也无法快速采用这两者中的任一种吗？声称 **dplyr** 具有高度可教学性的教员也会欣然同意他们的学生可以容易地学会 **data.table**，只要给一些例子，也就是我为初学者所选择的 base-R。
 
-We saw earlier that the **purrr** example,
+早些时候我们见过的 **purrr** 例子
 
 ``` r
 mtcars %>%
@@ -370,19 +363,11 @@ mtcars %>%
   map_dbl("r.squared")
 ```
 
-would be baffling even to experienced (but non-R) programmers, starkly
-contradicting the claimed "English-like clarity" of Tidy.  And the
-**dplyr** meaning of **mutate** is nowhere near its English meaning, and
-again, would not be guessed even by a non-R professional programmer.
+甚至有经验（但非 R）的程序员也难以理解，这和声称的“像英语一样晓畅”明显是矛盾的。而且 **dplyr** 中 **mutate** 的意思和英语中的意思一点都不接近，也不太可能猜出来，非 R 的专业程序员也不行。
 
-In other words, though students may say they like the "English" aspect
-of Tidy, the benefit is illusory.  They could become more proficient in
-R, **more quickly**, learning base-R than Tidy.
+换句话说，尽管学生可能会说他们喜欢 Tidy “英语”的方面，其好处却不是实在的。他们可能会更精通 R，**更迅捷**，如果学习 base-R 而不是 Tidy。
 
-By the way, as noted below, the Tidy advocates don't like the many
-base-R functions whose names *do* use English, e.g. **plot()**,
-**lines()**,  **aggregate()** and **merge()**.  Clearly, then, English
-is not the core issue.
+顺便说一下，如下所述，Tidy 倡导者不喜欢的很多 base-R 函数，名字 *确实* 使用了英语，例如 **plot()**、**lines()**、**aggregate()** 和 **merge()**。那么显然英语不是核心问题。
 
 ### Pipes
 
