@@ -414,17 +414,11 @@ h(b)
 
 Tidy 倡导者提出管道的好处是“从左向右”执行。他们承认无需管道也能做到这点，但是强调需要付出创建变量存储中间结果的代价。这是个有效的观点，但是得到的好处不大。和给学习 R 的人带来的认知过载、除错困难等问题比，值得吗？在我看来显然不值得。
 
-### Code readability
+### 代码可读性
 
-The Tidyverse advocates also claim that the "English" in **dplyr** makes
-the code easier to *read*, not just write.  To me, that is missing the
-point; as any instructor of software engineering can tell you, the best
-way to make code readable is to use REAL English, in good, meaningful
-code comments.  And this is just as important, if not more so, for
-nonprogrammers.
+Tidyverse 倡导者还提出 **dplyr** 的“英语”用法让代码更容易“阅读”，而不仅是编写。在我看来，这错过了重点；任何软件工程的教员都会告诉你，最佳代码可读性来自使用 **真正** 英语编写良好、有意义的代码注释。写注释对非程序员来说同样重要，甚至可能更重要。
 
-See my [R style guide](http://github.com/matloff/R-Style-Guide) for more on
-readability issues.
+我的 [R 风格导引](http://github.com/matloff/R-Style-Guide) 中提到了更多可读性问题。
 
 ### Summary:  the proper status of the Tidyverse in teaching
 
