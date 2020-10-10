@@ -369,19 +369,15 @@ mtcars %>%
 
 顺便说一下，如下所述，Tidy 倡导者不喜欢的很多 base-R 函数，名字 *确实* 使用了英语，例如 **plot()**、**lines()**、**aggregate()** 和 **merge()**。那么显然英语不是核心问题。
 
-### Pipes
+### 管道
 
-The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
-the function composition **h(g(f(x)))** as
+Tidyverse 还大量使用 **magrittr** *管道*，比如把函数的组合 **h(g(f(x)))** 写成
 
 ``` r
-f(x) %>%  g() %>% h()
+f(x) %>% g() %>% h()
 ```
 
-Again, the pitch made is that this is "English," in this case in the
-sense of reading left-to-right.  But again, one might question just how
-valuable that is, and in any event, I personally tend to write such code
-left-to-right anyway, *without* using pipes:
+这个例子的卖点是“英语”，可以从左向右阅读。然而，这到底有多少价值？在任何情况下，我个人也都可以从左向右写这段代码，*无需* 使用管道：
 
 ``` r
 a <- f(x)
@@ -389,14 +385,9 @@ b <- g(a)
 h(b)
 ```
 
-As a long-time teacher of programming languages (C, C++, Java, Pascal,
-Python, R, assembly language, etc.), I find the promotion of pipes
-troubling.  The piped version hides the fact that **g()** and **h()**
-have an argument, which is invisible in the pipe expression.  
+作为一名老师，我长期讲授编程语言（C、C++、Java、Pascal、Python、R、汇编语言等等），我发现对管道的介绍一直是个麻烦。用管道的版本隐藏了 **g()** 和 **h()** 需要一个变量的事实，其在管道的表达式中不可见。
 
-Or if **w()** say, were to have two arguments, the first one being used
-in the pipe, that argument would be hidden, making it appear that there
-is only one argument:
+假如 **w()** 需要两个变量，若第一个变量在管道中使用了，就会隐藏起来，看起来好像就只有一个变量：
 
 ``` r
 > w <- function(u,v) u+2*v
@@ -404,42 +395,24 @@ is only one argument:
 [1] 13
 ```
 
-Here **w()** has 2 arguments, but it looks like 1.
+这里 **w()** 有两个变量，但看起来只有一个。
 
-And what if we want that 3 to play the role of **v**, not **u**?  Yes,
-**magrittr** has a way to do that, the "dot" notation:
+如果我们想让 3 作为 **v**，而不是 **u** 呢？可以做到，用 **magrittr** 的“点”记法：
 
 ``` r
 > 3 %>% w(5,.)
 [1] 11
 ```
 
-But that is yet another example of my point, that **Tidy is burdening
-the R learner with extra, unnecessary complexity**.  Indeed, just as
-**dplyr**, with 263 functions, is far too complex for beginners, so are
-pipes.  There are so many variations to learn that Hadley's *R for Data
-Science* book devotes a full chapter to pipes, 3415 words.  
+这是说明我观点的又一个例子，**Tidy 用额外且不必要的复杂性给学习 R 的人增加了负担**。正如同有 263 个函数的 **dplyr**，对初学者来说，管道也同样过于复杂。管道在使用中变体太多了，Hadley 的书 *R for Data Science* 用了一整章讲管道，共 3415 个单词。
 
-As noted before, a beginner need learn only a small fraction of that
-material at first, but the above example of the dot notation is
-certainly not an advanced case.  Again, each time the beginner is
-confronted with a new situation, she must sift through the myriad
-variants, of **dplyr**, **purrr**, pipes or whatever.
+如前所述，初学者一开始只需要学习其中的一小部分内容，但上面的点记法的例子当然还不能算高级案例。初学者每次遇到新的状况，都必须从无数变体中筛选， **dplyr**、**purrr**、管道或者别的什么。
 
-Moreover, what if the function **h()** above has two arguments,
-rather than just one, with each argument requiring functional
-composition?  Pipes can't be used there.
+此外，如果上述函数 **h()** 需要两个变量而不是一个，并且每一个变量都需要函数的组合呢？管道就没法用了。
 
-And even more importantly, even advocates of pipes concede that pipes make
-debugging more difficult; by contrast, my style above lends itself easily to
-debugging.  And again, for large problems, piped code is slower.
+更为重要的是，即使管道的倡导者也会承认管道除错更加困难；作为对比，我上面写的那种风格很容易除错。另外，问题规模大的时候，用管道的代码运行较慢。
 
-The benefit of pipes claimed by the Tidyers is the "left to right"
-execution.  They conceded that one can achieve this without pipes, but
-stress that this comes at the expense of setting up variables for the
-intermediate results.  That's a valid point, but is that small gain
-worth the increased cognitive load on R learners, increased debugging
-problems and so on?  To me it clearly is not.
+Tidy 倡导者提出管道的好处是“从左向右”执行。他们承认无需管道也能做到这点，但是强调需要付出创建变量存储中间结果的代价。这是个有效的观点，但是得到的好处不大。和给学习 R 的人带来的认知过载、除错困难等问题比，值得吗？在我看来显然不值得。
 
 ### Code readability
 
