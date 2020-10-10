@@ -434,40 +434,28 @@ Tidyverse 倡导者还提出 **dplyr** 的“英语”用法让代码更容易�
 
 1. 不适当的过度概括。
 
-## RECOMMENDATIONS
+## 推荐
 
-*Teaching:*
+*教学*：
 
-Courses in R, **especially those aimed an nonprogrammers**, should
-develop a solid grounding in base-R as first priority.
+R 的课程，**特别是面向非程序员的课程**，应当以 base-R 建立稳固的基础作为第一要务。
 
-The proper placement of Tidy in R courses should be:
+Tidy 在 R 课程中的适当位置应该是：
 
-* **dplyr:** Taught, along with **data.table**, at the Intermediate R
-  level.
+* **dplyr**：与 **data.table** 一起在中等 R 级别教学。
 
-* **purrr:** Taught only at the Advanced level.
+* **purrr**：仅在高等级别教学.
 
-* pipes: Taught at the Intermediate level, and presented as an *option*
-  that some students may find useful in some situations (as opposed to
-being presented as *the* way one should work).
+* 管道：在中等级别教学，作为一个对有些学生在有些情况下有用的 *选项*，（而非作为 *必须* 采用的工作方式）。
 
-I am certainly not saying one should only use base R; on the
-contrary, CRAN is a major advantage of R, which I use extensively,
-and to which R beginners should definitely be exposed.
+我当然不是说应该只使用 base-R；正相反，CRAN 是 R 的一大优势，我也大量使用，R 初学者绝对应该知道这个。
 
-But the Tidyverse should be considered advanced R, not for beginners,
-just as is the case for most complex CRAN packages, and should be
-presented, as noted, as an *option*, not as *they* way.
+但是，Tidyverse 应被视为高级的 R，不是为了初学者，就像大多数复杂的 CRAN 包一样，并且应该作为 *选项* 被呈现，而非 *必须* 的方式。
 
-*The role of RStudio:*
+*RStudio 的作用*
 
-In my view, RStudio can easily remedy the problem.  It can take the
-following actions to greatly ameliorate the "monopolistic" problems:
+在我看来，RStudio 可以很容易地解决这个问题。可以采取以下措施，大大改善“垄断”问题：
 
-1.  Promote the teaching of base-R to beginners, treating the Tidyverse
-    as an advanced topic.  The popular book, *R for Everyone: Advanced
-Analytics and Graphics* (second ed.), by Jared Lander does exactly this!
+1. 向初学者推广 base-R 的教学，把 Tidyverse 作为高级课题。*R for Everyone: Advanced Analytics and Graphics* (second ed.)，作者 Jared Lander 这本流行书就是这样做的！
 
-2.  In the various RStudio Web pages on writing fast R code, give
-    **data.table** equal time.
+1. 在 RStudio 各种关于编写快速 R 代码的网页中，给予 **data.table** 同等对待。
